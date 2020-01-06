@@ -1,0 +1,1 @@
+exports.addNewTask = require('./addNewTask');
