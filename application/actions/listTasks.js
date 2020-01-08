@@ -1,3 +1,3 @@
-module.exports = function listTasks(TaskRepository) {
+module.exports = (TaskRepository) => () => {
     return TaskRepository.getAll();
 };

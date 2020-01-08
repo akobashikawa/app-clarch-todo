@@ -1,3 +1,3 @@
-module.exports = function addTask(TaskRepository, text) {
+module.exports = (TaskRepository) => (text) => {
     return TaskRepository.add(text);
 };
