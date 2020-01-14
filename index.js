@@ -1,6 +1,6 @@
 console.log('Clean Architecture To Do App');
 
-const { addTask, listTasks, completeTask, removeTask } = require('./application/actions');
+const { addTaskBuilder, listTasksBuilder, completeTaskBuilder, removeTaskBuilder } = require('./application/actions');
 
 function SimpleTaskRepository() {
     this.items = [];
@@ -32,16 +32,20 @@ function SimpleTaskRepository() {
 
 const TaskRepository = new SimpleTaskRepository();
 
+const listTasks = listTasksBuilder(TaskRepository);
+const addTask = addTaskBuilder(TaskRepository);
+const completeTask = completeTaskBuilder(TaskRepository);
+const removeTask = removeTaskBuilder(TaskRepository);
 
-const tasks = listTasks(TaskRepository)();
+const tasks = listTasks();
 
-const a = addTask(TaskRepository)('Say Hello');
+const a = addTask('Say Hello');
 console.log(tasks);
-const b = addTask(TaskRepository)('Dí Hola');
+const b = addTask('Dí Hola');
 console.log(tasks);
 
-const c = completeTask(TaskRepository)(a);
+const c = completeTask(a);
 console.log(tasks);
 
-const d = removeTask(TaskRepository)(a);
+const d = removeTask(a);
 console.log(tasks);

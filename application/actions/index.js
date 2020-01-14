@@ -1,4 +1,4 @@
-exports.addTask = require('./addTask');
-exports.listTasks = require('./listTasks');
-exports.completeTask = require('./completeTask');
-exports.removeTask = require('./removeTask');
+exports.addTaskBuilder = require('./addTask');
+exports.listTasksBuilder = require('./listTasks');
+exports.completeTaskBuilder = require('./completeTask');
+exports.removeTaskBuilder = require('./removeTask');
