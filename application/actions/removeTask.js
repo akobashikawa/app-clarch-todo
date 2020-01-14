@@ -1,5 +1,5 @@
-module.exports = (TaskRepository) => (item) => {
+module.exports = ({ taskRepository }) => (item) => {
     const id = item.id;
     // console.log('elimina tarea');
-    return TaskRepository.delete(id);
+    return taskRepository.delete(id);
 };

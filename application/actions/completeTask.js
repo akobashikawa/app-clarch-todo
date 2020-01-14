@@ -1,9 +1,9 @@
-module.exports = (TaskRepository) => (item) => {
+module.exports = ({ taskRepository }) => (item) => {
     const id = item.id;
     const data = {
         text: item.text,
         status: 'completed',
     }
     // console.log('completa tarea');
-    return TaskRepository.update(id, data);
+    return taskRepository.update(id, data);
 };

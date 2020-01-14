@@ -7,6 +7,7 @@
     "test": "test"
   },
   "scripts": {
+    "dev": "nodemon index.js",
     "test": "tape test/**/*.tape.js | tap-nirvana"
   },
   "repository": {

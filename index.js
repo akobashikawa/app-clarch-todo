@@ -30,12 +30,12 @@ function SimpleTaskRepository() {
     };
 };
 
-const TaskRepository = new SimpleTaskRepository();
+const taskRepository = new SimpleTaskRepository();
 
-const listTasks = listTasksBuilder(TaskRepository);
-const addTask = addTaskBuilder(TaskRepository);
-const completeTask = completeTaskBuilder(TaskRepository);
-const removeTask = removeTaskBuilder(TaskRepository);
+const listTasks = listTasksBuilder({ taskRepository });
+const addTask = addTaskBuilder({ taskRepository });
+const completeTask = completeTaskBuilder({ taskRepository });
+const removeTask = removeTaskBuilder({ taskRepository });
 
 const tasks = listTasks();
 

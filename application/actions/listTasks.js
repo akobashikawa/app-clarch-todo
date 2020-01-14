@@ -1,4 +1,4 @@
-module.exports = (TaskRepository) => () => {
+module.exports = ({ taskRepository }) => () => {
     // console.log('lista tareas');
-    return TaskRepository.getAll();
+    return taskRepository.getAll();
 };

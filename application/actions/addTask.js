@@ -1,4 +1,4 @@
-module.exports = (TaskRepository) => (text) => {
+module.exports = ({ taskRepository }) => (text) => {
     // console.log('agrega tarea');
-    return TaskRepository.add(text);
+    return taskRepository.add(text);
 };

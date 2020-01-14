@@ -30,12 +30,12 @@ function TestTaskRepository() {
     };
 };
 
-const TaskRepository = new TestTaskRepository();
+const taskRepository = new TestTaskRepository();
 
-const listTasks = listTasksBuilder(TaskRepository);
-const addTask = addTaskBuilder(TaskRepository);
-const completeTask = completeTaskBuilder(TaskRepository);
-const removeTask = removeTaskBuilder(TaskRepository);
+const listTasks = listTasksBuilder({ taskRepository });
+const addTask = addTaskBuilder({ taskRepository });
+const completeTask = completeTaskBuilder({ taskRepository });
+const removeTask = removeTaskBuilder({ taskRepository });
 
 let tasks = [];
 test('lista tareas', function (t) {
