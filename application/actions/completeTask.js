@@ -4,5 +4,6 @@ module.exports = (TaskRepository) => (item) => {
         text: item.text,
         status: 'completed',
     }
-    return TaskRepository.update(item);
+    console.log('completa tarea');
+    return TaskRepository.update(id, data);
 };

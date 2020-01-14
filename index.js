@@ -34,9 +34,9 @@ const TaskRepository = new SimpleTaskRepository();
 
 
 const tasks = listTasks(TaskRepository)();
-console.log(tasks);
 
 const a = addTask(TaskRepository)('Say Hello');
+console.log(tasks);
 const b = addTask(TaskRepository)('Dí Hola');
 console.log(tasks);
 
