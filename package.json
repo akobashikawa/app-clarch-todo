@@ -1,0 +1,26 @@
+{
+  "name": "app-clarch-todo",
+  "version": "1.0.0",
+  "description": "Aprendiendo clean architecture",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "tape test/**/*.tape.js | tap-nirvana"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akobashikawa/app-clarch-todo.git"
+  },
+  "author": "Rulo Kobashikawa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akobashikawa/app-clarch-todo/issues"
+  },
+  "homepage": "https://github.com/akobashikawa/app-clarch-todo#readme",
+  "devDependencies": {
+    "tap-nirvana": "^1.1.0",
+    "tape": "^4.13.0"
+  }
+}
