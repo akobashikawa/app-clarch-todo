@@ -6,8 +6,8 @@ const { MongoTasksRepository } = require('../repositories');
 const { addTaskBuilder, listTasksBuilder, completeTaskBuilder, uncompleteTaskBuilder, removeTaskBuilder } = require('../../application/actions');
 
 
-// const taskRepository = new SimpleTasksRepository();
-const taskRepository = new MongoTasksRepository();
+const taskRepository = new SimpleTasksRepository();
+// const taskRepository = new MongoTasksRepository();
 
 const listTasks = listTasksBuilder({ taskRepository });
 const addTask = addTaskBuilder({ taskRepository });

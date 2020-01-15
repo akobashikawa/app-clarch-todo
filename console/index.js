@@ -11,15 +11,17 @@ const addTask = addTaskBuilder({ taskRepository });
 const completeTask = completeTaskBuilder({ taskRepository });
 const removeTask = removeTaskBuilder({ taskRepository });
 
-const tasks = listTasks();
+(async () => {
+    const tasks = await listTasks();
 
-const a = addTask('Say Hello');
-console.log(tasks);
-const b = addTask('Dí Hola');
-console.log(tasks);
+    const a = await addTask('Say Hello');
+    console.log(tasks);
+    const b = await addTask('Dí Hola');
+    console.log(tasks);
 
-const c = completeTask(a.id);
-console.log(tasks);
+    const c = await completeTask(a.id);
+    console.log(tasks);
 
-const d = removeTask(a.id);
-console.log(tasks);
+    const d = await removeTask(a.id);
+    console.log(tasks);
+})();
