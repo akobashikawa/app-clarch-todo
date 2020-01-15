@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>To Do</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>To Do</h1>
+    
+    <% if (tasks.length > 0) { %>
+      <ol>
+      <% for (let task of tasks ) {
+        %>
+        <li>
+          <a href="/complete-task?id=<%= task.id %>">[Completar]</a>
+          <a href="/remove-task?id=<%= task.id %>">[Eliminar]</a>
+          <% if (task.status == 'active')  {
+            %>
+            <%= task.text %>
+            <%
+          } else {
+            %>
+            <del><%= task.text %></del>
+            <%
+          } %>
+        </li>
+        <%
+      }
+      %>
+      </ol>
+      <%
+    } else {
+      %>
+      <p>No hay items</p>
+      <%
+    } %>
+
+    <form method="POST" action="/add-task">
+      <input type="text" name="text">
+      <button type="submit">Agregar</button>
+    </form>
+  </body>
+</html>
