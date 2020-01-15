@@ -1,4 +1,8 @@
 module.exports = ({ taskRepository }) => (text) => {
     // console.log('agrega tarea');
-    return taskRepository.add(text);
+    const data = {
+        text,
+        status: 'uncompleted'
+    };
+    return taskRepository.add(data);
 };

@@ -1,11 +1,8 @@
 module.exports = function SimpleTasksRepository() {
     this.items = [];
-    this.add = (text) => {
-        const newItem = {
-            id: this.items.length,
-            text,
-            status: 'uncompleted'
-        };
+    this.add = (data) => {
+        const newItem = data;
+        data.id = '' + this.items.length;
         this.items.push(newItem);
         return newItem;
     };
