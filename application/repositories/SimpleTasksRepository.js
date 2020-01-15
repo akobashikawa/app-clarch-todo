@@ -9,7 +9,6 @@ module.exports = function SimpleTasksRepository() {
     this.getAll = () => this.items;
     this.get = (id) => this.items.find(x => x.id == id);
     this.update = (id, data) => {
-        console.log(id, data);
         let found = this.items.find(x => x.id == id);
         if (found) {
             found = Object.assign(found, data);

@@ -13,8 +13,8 @@ const uncompleteTask = uncompleteTaskBuilder({ taskRepository });
 const removeTask = removeTaskBuilder({ taskRepository });
 
 let tasks = [];
-test('lista tareas', function (t) {
-    const actual = tasks = listTasks();
+test('lista tareas', async function (t) {
+    const actual = tasks = await listTasks();
     const expected = [];
     const message = 'ok'
     t.deepEqual(actual, expected, message);
@@ -22,8 +22,8 @@ test('lista tareas', function (t) {
 });
 
 let task = {};
-test('agrega tarea', function (t) {
-    task = addTask('Say Hello');
+test('agrega tarea', async function (t) {
+    task = await addTask('Say Hello');
     const actual = task.text;
     const expected = 'Say Hello';
     const message = 'ok'
@@ -31,18 +31,21 @@ test('agrega tarea', function (t) {
     t.end();
 });
 
-test('completa tarea', function (t) {
-    const actual = completeTask(task.id).status;
+test('completa tarea', async function (t) {
+    const item = await completeTask(task.id);
+    const actual = item.status;
     const expected = 'completed';
     const message = 'ok'
     t.deepEqual(actual, expected, message);
     t.end();
 });
 
-test('elimina tarea', function (t) {
-    const len = listTasks().length;
-    const removed = removeTask(task.id);
-    const actual = listTasks().length;
+test('elimina tarea', async function (t) {
+    let tasks = await listTasks();
+    let len = tasks.length;
+    const removed = await removeTask(task.id);
+    tasks = await listTasks();
+    const actual = tasks.length;
     const expected = len - 1;
     const message = 'ok'
     t.deepEqual(actual, expected, message);
