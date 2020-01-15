@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
+const { SimpleTasksRepository } = require('../../application/repositories');
 const { MongoTasksRepository } = require('../repositories');
 const { addTaskBuilder, listTasksBuilder, completeTaskBuilder, uncompleteTaskBuilder, removeTaskBuilder } = require('../../application/actions');
 
 
+// const taskRepository = new SimpleTasksRepository();
 const taskRepository = new MongoTasksRepository();
 
 const listTasks = listTasksBuilder({ taskRepository });
