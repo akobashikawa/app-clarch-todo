@@ -1,0 +1,1 @@
+exports.SimpleTasksRepository = require('./SimpleTasksRepository');
