@@ -1,8 +1,12 @@
-module.exports = ({ taskRepository }) => (text) => {
-    // console.log('agrega tarea');
-    const data = {
-        text,
-        status: 'uncompleted'
-    };
-    return taskRepository.add(data);
+module.exports = ({ taskRepository }) => async (text) => {
+    try {
+        // console.log('agrega tarea');
+        const data = {
+            text,
+            status: 'uncompleted'
+        };
+        return taskRepository.add(data);
+    } catch (error) {
+        throw error;
+    }
 };

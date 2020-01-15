@@ -1,0 +1,1 @@
+exports.MongoTasksRepository = require('./MongoTasksRepository');

@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-const { SimpleTasksRepository } = require('../../application/repositories');
+const { MongoTasksRepository } = require('../repositories');
 const { addTaskBuilder, listTasksBuilder, completeTaskBuilder, uncompleteTaskBuilder, removeTaskBuilder } = require('../../application/actions');
 
 
-const taskRepository = new SimpleTasksRepository();
+const taskRepository = new MongoTasksRepository();
 
 const listTasks = listTasksBuilder({ taskRepository });
 const addTask = addTaskBuilder({ taskRepository });
@@ -13,34 +13,53 @@ const completeTask = completeTaskBuilder({ taskRepository });
 const uncompleteTask = uncompleteTaskBuilder({ taskRepository });
 const removeTask = removeTaskBuilder({ taskRepository });
 
-router.get('/', (req, res) => {
-  const tasks = listTasks();
-  res.render('index', { tasks });
+router.get('/', async (req, res) => {
+  try {
+    const tasks = await listTasks();
+    res.render('index', { tasks });
+  } catch (error) {
+    res.status(500).end(error);
+  }
 });
 
-router.post('/add-task', (req, res) => {
-  const text = req.body.text.trim();
-  addTask(text);
-  const tasks = listTasks();
-  res.redirect('/');
+router.post('/add-task', async (req, res) => {
+  try {
+    const text = req.body.text.trim();
+    await addTask(text);
+    res.redirect('/');
+  } catch (error) {
+    res.status(500).end(error);
+  }
 });
 
-router.get('/complete-task', (req, res) => {
-  const id = req.query.id;
-  completeTask(id);
-  res.redirect('/');
+router.get('/complete-task', async (req, res) => {
+  try {
+    const id = req.query.id;
+    await completeTask(id);
+    res.redirect('/');
+  } catch (error) {
+    res.status(500).end(error);
+  }
 });
 
-router.get('/uncomplete-task', (req, res) => {
-  const id = req.query.id;
-  uncompleteTask(id);
-  res.redirect('/');
+router.get('/uncomplete-task', async (req, res) => {
+  try {
+    const id = req.query.id;
+    await uncompleteTask(id);
+    res.redirect('/');
+  } catch (error) {
+    res.status(500).end(error);
+  }
 });
 
-router.get('/remove-task', (req, res) => {
-  const id = req.query.id;
-  removeTask(id);
-  res.redirect('/');
+router.get('/remove-task', async (req, res) => {
+  try {
+    const id = req.query.id;
+    await removeTask(id);
+    res.redirect('/');
+  } catch (error) {
+    res.status(500).end(error);
+  }
 });
 
 module.exports = router;
