@@ -13,39 +13,34 @@ const completeTask = completeTaskBuilder({ taskRepository });
 const uncompleteTask = uncompleteTaskBuilder({ taskRepository });
 const removeTask = removeTaskBuilder({ taskRepository });
 
-const listTasksCallback = (req, res) => {
+router.get('/', (req, res) => {
   const tasks = listTasks();
   res.render('index', { tasks });
-};
-router.get('/', listTasksCallback);
+});
 
-const addTasksCallback = (req, res) => {
+router.post('/add-task', (req, res) => {
   const text = req.body.text.trim();
   addTask(text);
   const tasks = listTasks();
   res.redirect('/');
-};
-router.post('/add-task', addTasksCallback);
+});
 
-const completeTasksCallback = (req, res) => {
+router.get('/complete-task', (req, res) => {
   const id = req.query.id;
   completeTask(id);
   res.redirect('/');
-};
-router.get('/complete-task', completeTasksCallback);
+});
 
-const uncompleteTasksCallback = (req, res) => {
+router.get('/uncomplete-task', (req, res) => {
   const id = req.query.id;
   uncompleteTask(id);
   res.redirect('/');
-};
-router.get('/uncomplete-task', uncompleteTasksCallback);
+});
 
-const removeTasksCallback = (req, res) => {
+router.get('/remove-task', (req, res) => {
   const id = req.query.id;
   removeTask(id);
   res.redirect('/');
-};
-router.get('/remove-task', removeTasksCallback);
+});
 
 module.exports = router;
