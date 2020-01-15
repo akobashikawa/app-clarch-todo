@@ -3,6 +3,12 @@
   <head>
     <title>To Do</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+      .completed {
+        opacity: 0.3;
+        text-decoration: line-through;
+      }
+    </style>
   </head>
   <body>
     <h1>To Do</h1>
@@ -15,15 +21,7 @@
           <a href="/complete-task?id=<%= task.id %>">[Completar]</a>
           <a href="/uncomplete-task?id=<%= task.id %>">[Descompletar]</a>
           <a href="/remove-task?id=<%= task.id %>">[Eliminar]</a>
-          <% if (task.status == 'completed')  {
-            %>
-            <del><%= task.text %></del>
-            <%
-          } else {
-            %>
-            <%= task.text %>
-            <%
-          } %>
+          <span class="<%= task.status %>"><%= task.text %></span>
         </li>
         <%
       }
