@@ -13,14 +13,15 @@
         %>
         <li>
           <a href="/complete-task?id=<%= task.id %>">[Completar]</a>
+          <a href="/uncomplete-task?id=<%= task.id %>">[Descompletar]</a>
           <a href="/remove-task?id=<%= task.id %>">[Eliminar]</a>
-          <% if (task.status == 'active')  {
+          <% if (task.status == 'completed')  {
             %>
-            <%= task.text %>
+            <del><%= task.text %></del>
             <%
           } else {
             %>
-            <del><%= task.text %></del>
+            <%= task.text %>
             <%
           } %>
         </li>

@@ -4,7 +4,7 @@ module.exports = function SimpleTasksRepository() {
         const newItem = {
             id: this.items.length,
             text,
-            status: 'active'
+            status: 'uncompleted'
         };
         this.items.push(newItem);
         return newItem;

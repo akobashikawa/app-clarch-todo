@@ -1,7 +1,7 @@
 const test = require('tape');
 
 const { SimpleTasksRepository } = require('../application/repositories');
-const { addTaskBuilder, listTasksBuilder, completeTaskBuilder, removeTaskBuilder } = require('../application/actions');
+const { addTaskBuilder, listTasksBuilder, completeTaskBuilder, uncompleteTaskBuilder, removeTaskBuilder } = require('../application/actions');
 
 
 const taskRepository = new SimpleTasksRepository();
@@ -9,6 +9,7 @@ const taskRepository = new SimpleTasksRepository();
 const listTasks = listTasksBuilder({ taskRepository });
 const addTask = addTaskBuilder({ taskRepository });
 const completeTask = completeTaskBuilder({ taskRepository });
+const uncompleteTask = uncompleteTaskBuilder({ taskRepository });
 const removeTask = removeTaskBuilder({ taskRepository });
 
 let tasks = [];
