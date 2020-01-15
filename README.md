@@ -1,7 +1,6 @@
 # Clean Architecture To Do App
 
 - `application` contiene la lógica del negocio
-- `repositories` contiene repositorios de ejemplo
 - `console` es una aplicación de consola que usa la lógica definida en application y un repositorio simple
 - `tape` es una aplicación de prueba que usa la lógica definida en application y un repositorio simple
 - `express` es una aplicación express que usa la lógica definida en application y un repositorio que se conecta a mongo
